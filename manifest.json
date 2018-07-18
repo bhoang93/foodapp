@@ -1,5 +1,6 @@
 {
- "name": "App",
+ "short_name": "FoodApp",
+ "name": "Food App",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
@@ -32,10 +33,13 @@
    "density": "3.0"
   },
   {
-   "src": "\/android-icon-192x192.png",
-   "sizes": "192x192",
+   "src": "\/ms-icon-310x310.png",
+   "sizes": "192x192 512x512",
    "type": "image\/png",
    "density": "4.0"
   }
- ]
+ ],
+ "display": "standalone",
+ "theme_color": "#00c3ff",
+ "background_color": "#00c3ff",
 }

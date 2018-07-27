@@ -28,7 +28,7 @@ class TemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <button id="directions" onClick={this.toggleDrawer('left', true)}>Saved Locations</button>
+        <button id="directions" className="savedLocations" onClick={this.toggleDrawer('left', true)}>+</button>
         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
           <div
             tabIndex={0}

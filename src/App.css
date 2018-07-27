@@ -100,15 +100,21 @@ strong {
   text-align: center;
 }
 
-#listItem {
-  cursor: pointer;
-}
-
 .restList {
+  cursor: pointer;
     background-color: white;
     transition: 0.3s;
 }
 
 .restList:hover {
     background-color: #bababa;
+}
+
+.blueButton {
+    background-color: #0084B0;
+    transition: 0.3s;
+}
+
+.blueButton:hover {
+    background-color: #006485;
 }

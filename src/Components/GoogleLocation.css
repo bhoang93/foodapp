@@ -1,0 +1,30 @@
+.autocomplete-dropdown-container {
+  color: black;
+  width: 30%;
+  margin: auto;
+}
+
+input {
+	width: 30%;
+	height: 30px;
+}
+
+@media only screen and (max-width: 800px) {
+	.autocomplete-dropdown-container {
+	  width: 60%;
+	}
+
+	input {
+		width: 50%;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.autocomplete-dropdown-container {
+	  width: 70%;
+	}
+
+	input {
+		width: 70%;
+	}
+}

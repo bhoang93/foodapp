@@ -1,15 +1,13 @@
 {
   "name": "foodapp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "http://bhoang93.github.io/foodapp",
   "dependencies": {
-    "@material-ui/core": "^1.4.1",
+    "@material-ui/core": "^1.4.3",
     "gh-pages": "^1.2.0",
-    "react": "^16.4.1",
-    "react-cookie": "^2.2.0",
-    "react-cookies": "^0.1.0",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-places-autocomplete": "^7.2.0",
     "react-scripts": "1.1.4"
   },

@@ -7,21 +7,6 @@
   animation: spin 1.5s infinite linear;
 }
 
-button {
-  background-color: #FF4B2A;
-  color: white;
-  padding: 10px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #D52100;
-}
-
 #titleDiv {
   display: flex;
   justify-content: center;
@@ -81,19 +66,6 @@ strong {
   animation-duration: 1s;
 }
 
-#buttonDiv button {
-  border-radius: 0px
-}
-
-#directions {
-    background-color: #0084B0;
-    transition: 0.3s;
-}
-
-#directions:hover {
-    background-color: #006485;
-}
-
 #savedRests {
   color: black;
   font-weight: bold;
@@ -110,11 +82,34 @@ strong {
     background-color: #bababa;
 }
 
-.blueButton {
-    background-color: #0084B0;
-    transition: 0.3s;
+.icon {
+  fill: #0084B0;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  transition: 0.15s;
+  margin-right: 5px;
 }
 
-.blueButton:hover {
-    background-color: #006485;
+.directionsIcon:hover {
+  fill: #4465FC;
+}
+
+.saveIcon:hover {
+  fill: #FF4B2A;
+}
+
+.backIcon:hover {
+  fill: #FFB400;
+}
+
+.icon:active {
+  height: 30px;
+  width: 30px;
+}
+
+.iconDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

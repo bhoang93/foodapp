@@ -1,12 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import RestCard from './restCard';
 import './restList.css'
+import menu from '../Icons/menu.svg';
 
 class TemporaryDrawer extends React.Component {
   state = {
@@ -28,7 +25,7 @@ class TemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <button id="directions" className="savedLocations" onClick={this.toggleDrawer('left', true)}>+</button>
+        <img src={menu} id="directions" className="savedLocations" onClick={this.toggleDrawer('left', true)} />
         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
           <div
             tabIndex={0}

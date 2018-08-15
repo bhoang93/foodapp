@@ -17,7 +17,6 @@ class TemporaryDrawer extends React.Component {
     this.setState({
       [side]: open,
     });
-    console.log(this.props.restStore)
   };
 
   render() {
@@ -38,7 +37,7 @@ class TemporaryDrawer extends React.Component {
 		        <List>
 		        	{restStore.map((rest, i) => {
 		        		return(
-		        			<RestCard key={i} loadRest={loadRest} restInfo={restStore[i]}/>
+		        			<RestCard key={i} loadRest={loadRest} restinfo={restStore[i]}/>
 		        			)
 		        	})}
 		        </List>       

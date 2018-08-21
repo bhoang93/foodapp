@@ -23,8 +23,8 @@
     z-index: 2;
     right: 10px;
     justify-content: right;
-    font-size: 2vw;
     color: lightgrey;
+    font-size: 30px
 }
 
 .deleteButton:hover {

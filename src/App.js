@@ -12,6 +12,8 @@ import DirectionsIcon from './Icons/DirectionsIcon.js';
 import RedoIcon from './Icons/RedoIcon.js';
 import SaveIcon from './Icons/SaveIcon.js';
 
+import { Tooltip } from 'react-tippy';
+
 const localforage = require('localforage');
 
 const initialState = {
@@ -19,6 +21,8 @@ const initialState = {
       submit: false,
       stars: null,
       restStore: [],
+      key: '',
+      updateList: false
     }
 
 let restStore =[];
@@ -80,28 +84,28 @@ googleSubmit = (lat, long) => { // Same as above but using Google Places rather 
   this.postLocation(position);
 };
 
-componentDidMount() { // Should be loading cache for resteraunt array
-    localforage.iterate(function(value, key, iterationNumber) {
-    restStore.push(key);
-  })
-}
-
 saveRest = () => { // Save resteraunt to array
 
    const bind = this;  
    localforage.setItem(this.currentRest.rest, this.currentRest)
    .then((data) => {
     restStore.push(bind.currentRest.rest);
+    this.setState({key: Math.random()})
   }).catch((err) => {
     console.log("error:", err, this.currentRest)
    }); // If it is a new resteraunt it is added to the store
-  }
+}
+
+deleteRest = (key) => {
+  localforage.removeItem(key).catch(err => console.log(err));
+  this.setState({key: 'refresh'});
+}
 
   render() {
     return (
       <div className="App">
         <div id='titleDiv'><img id="logo" src={foodapp} alt="Logo" width="100px" height="100px"/><span id="title">Food App</span></div>
-        <TemporaryDrawer loadRest={this.loadRest} restStore={restStore}/><br />
+        <TemporaryDrawer key={this.state.key} deleteRest={this.deleteRest} loadRest={this.loadRest} restStore={restStore}/><br />
         {!this.state.submit ? <div><Button variant="contained" color="secondary" onClick={this.geoLocation}>Where should I go eat now?</Button><br /><br /><GoogleLocation googleSubmit={this.googleSubmit}/></div> : <div></div>}
         { !this.state.submit ? <p></p> :
           !this.state.loadDone ? <img src={Loading} id="loading" alt="Loading..."/> : 
@@ -115,11 +119,33 @@ saveRest = () => { // Save resteraunt to array
             <p><strong>Average cost per person:</strong> {this.currentRest.cost}</p>
 
             <div className="iconDiv">
+
+            <Tooltip
+              title="Directions"
+              position="bottom"
+              trigger="mouseenter focus">
+
               <a href={this.currentRest.googleMaps}>
                 <div><DirectionsIcon /></div>
               </a>
+
+            </Tooltip>
+
+            <Tooltip
+
+              title="Save"
+              position="bottom"
+              trigger="mouseenter focus">
               <div onClick={this.saveRest}><SaveIcon /></div>
+
+            </Tooltip>
+
+            <Tooltip
+              title="Go Back"
+              position="bottom"
+              trigger="mouseenter focus">
               <div onClick={this.goBack}><BackIcon /></div>
+            </Tooltip>
             </div>
 
         </div>

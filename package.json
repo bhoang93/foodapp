@@ -1,6 +1,6 @@
 {
   "name": "foodapp",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "homepage": "http://bhoang93.github.io/foodapp",
   "dependencies": {
@@ -10,7 +10,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-places-autocomplete": "^7.2.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-tippy": "^1.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

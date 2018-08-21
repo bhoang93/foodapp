@@ -5,6 +5,10 @@ import RestCard from './restCard';
 import './restList.css'
 import menu from '../Icons/menu.svg';
 
+const localforage = require('localforage');
+
+let restStore = [];
+
 class TemporaryDrawer extends React.Component {
   state = {
     top: false,
@@ -19,8 +23,15 @@ class TemporaryDrawer extends React.Component {
     });
   };
 
+  componentDidMount() {
+    restStore = [];
+    localforage.iterate(function(value, key, iterationNumber) {
+    restStore.push(key);
+    })
+  }
+
   render() {
-    const { restStore, loadRest } = this.props;
+    const { deleteRest, loadRest } = this.props;
 
     return (
       <div>
@@ -28,7 +39,6 @@ class TemporaryDrawer extends React.Component {
         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
           <div
             tabIndex={0}
-            onClick={this.toggleDrawer('left', false)}
             onKeyDown={this.toggleDrawer('left', false)}
             id="drawer"
           >
@@ -37,7 +47,7 @@ class TemporaryDrawer extends React.Component {
 		        <List>
 		        	{restStore.map((rest, i) => {
 		        		return(
-		        			<RestCard key={i} loadRest={loadRest} restinfo={restStore[i]}/>
+		        			<RestCard deleteRest={deleteRest} key={i} loadRest={loadRest} restinfo={restStore[i]}/>
 		        			)
 		        	})}
 		        </List>       

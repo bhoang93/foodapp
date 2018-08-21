@@ -73,7 +73,6 @@ strong {
 }
 
 .restList {
-  cursor: pointer;
     background-color: white;
     transition: 0.3s;
 }
@@ -100,12 +99,12 @@ strong {
 }
 
 .backIcon:hover {
-  fill: #FFB400;
+  fill: green;
 }
 
 .icon:active {
-  height: 35px;
-  width: 35px;
+  height: 36px;
+  width: 36px;
 }
 
 .iconDiv {

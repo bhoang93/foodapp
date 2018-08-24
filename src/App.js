@@ -49,27 +49,32 @@ goBack = () => { // Go back to submit screen.
 }
 
 postLocation = (position) => {
-  const url = "https://developers.zomato.com/api/v2.1/geocode?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude; // Create Zomato URL
-  fetch(url, 
-  { headers: 
-    { Accept: "application/json", 
-      "User-Key": process.env.REACT_APP_ZOMATO_KEY } 
-  }).then(results => {
-    if (results.status === 404) {this.setState({submit: false, loadDone: false}); alert("Something went wrong, please try again.")}
-    else {return results.json();}
-  }).then(data => { // Returns data needed to display
-    const choice = Math.floor((Math.random() * (data.nearby_restaurants.length - 1)) + 1);
-    const restInfo = data.nearby_restaurants[choice].restaurant;
-    const stars = restInfo.user_rating.aggregate_rating;
-    const type = restInfo.cuisines;
-    const cost = restInfo.currency + Math.round(restInfo.average_cost_for_two / 2);
-    const location = restInfo.location.address
-    const rest = restInfo.name;
-    const photo = restInfo.featured_image;
-    const googleMaps = "https://www.google.com/maps/dir//" + restInfo.name.replace(/\ /g, "+") + "+" + restInfo.location.zipcode;
-    this.currentRest = { rest, location, photo, type, cost, googleMaps, stars }
-    this.setState({ loadDone: true })
-  })
+  if (navigator.onLine) {
+    const url = "https://developers.zomato.com/api/v2.1/geocode?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude; // Create Zomato URL
+    fetch(url, 
+    { headers: 
+      { Accept: "application/json", 
+        "User-Key": process.env.REACT_APP_ZOMATO_KEY } 
+    }).then(results => {
+      if (results.status === 404) {this.setState({submit: false, loadDone: false}); alert("Something went wrong, please try again.")}
+      else {return results.json();}
+    }).then(data => { // Returns data needed to display
+      const choice = Math.floor((Math.random() * (data.nearby_restaurants.length - 1)) + 1);
+      const restInfo = data.nearby_restaurants[choice].restaurant;
+      const stars = restInfo.user_rating.aggregate_rating;
+      const type = restInfo.cuisines;
+      const cost = restInfo.currency + Math.round(restInfo.average_cost_for_two / 2);
+      const location = restInfo.location.address
+      const rest = restInfo.name;
+      const photo = restInfo.featured_image;
+      const googleMaps = "https://www.google.com/maps/dir//" + restInfo.name.replace(/\ /g, "+") + "+" + restInfo.location.zipcode;
+      this.currentRest = { rest, location, photo, type, cost, googleMaps, stars }
+      this.setState({ loadDone: true })
+    })
+  } else {
+    this.setState({initialState});
+    alert("Please check your internet connection and try again.")
+  }
 }
 
 geoLocation = () => { // Calculate location
